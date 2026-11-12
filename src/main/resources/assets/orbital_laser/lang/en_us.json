@@ -1,0 +1,20 @@
+{
+  "item.orbital_laser.orbital_laser": "Orbital Laser",
+  "tooltip.orbital_laser.use": "Use: lock the aimed block and start the charge",
+  "tooltip.orbital_laser.cancel": "Sneak + Use: cancel during the charge",
+  "tooltip.orbital_laser.range": "Range: %s blocks",
+  "message.orbital_laser.locked": "Target locked at %s, %s, %s. The sky is cracking... run!",
+  "message.orbital_laser.cancelled": "Strike cancelled. Cooldown not spent.",
+  "message.orbital_laser.nothing_to_cancel": "No charge in progress to cancel.",
+  "message.orbital_laser.already_active": "You already have a strike in progress.",
+  "message.orbital_laser.cooldown": "Orbital laser recharging: %ss left.",
+  "message.orbital_laser.no_permission": "Only operators can call the orbital laser on this server.",
+  "message.orbital_laser.too_many": "Too many strikes in progress on this server. Try again soon.",
+  "message.orbital_laser.no_target": "No block in range (%s blocks).",
+  "message.orbital_laser.not_loaded": "That target is not loaded.",
+  "message.orbital_laser.protected": "That target is protected.",
+  "message.orbital_laser.mob_griefing_off": "mobGriefing is off: the strike will not destroy terrain.",
+  "message.orbital_laser.complete": "Strike complete. Cooldown started.",
+  "death.attack.orbital_laser": "%1$s was vaporized by an orbital laser",
+  "death.attack.orbital_laser.player": "%1$s was vaporized by %2$s's orbital laser"
+}

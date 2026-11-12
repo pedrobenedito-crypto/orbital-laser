@@ -1,0 +1,20 @@
+{
+  "item.orbital_laser.orbital_laser": "Laser Orbital",
+  "tooltip.orbital_laser.use": "Usar: trava o bloco mirado e começa a carga",
+  "tooltip.orbital_laser.cancel": "Agachar + Usar: cancela durante a carga",
+  "tooltip.orbital_laser.range": "Alcance: %s blocos",
+  "message.orbital_laser.locked": "Alvo travado em %s, %s, %s. O céu está rachando... corra!",
+  "message.orbital_laser.cancelled": "Ataque cancelado. A recarga não foi gasta.",
+  "message.orbital_laser.nothing_to_cancel": "Nenhuma carga em andamento para cancelar.",
+  "message.orbital_laser.already_active": "Você já tem um ataque em andamento.",
+  "message.orbital_laser.cooldown": "Laser orbital recarregando: faltam %ss.",
+  "message.orbital_laser.no_permission": "Só operadores podem chamar o laser orbital neste servidor.",
+  "message.orbital_laser.too_many": "Muitos ataques em andamento no servidor. Tente de novo em instantes.",
+  "message.orbital_laser.no_target": "Nenhum bloco no alcance (%s blocos).",
+  "message.orbital_laser.not_loaded": "Esse alvo não está carregado.",
+  "message.orbital_laser.protected": "Esse alvo está protegido.",
+  "message.orbital_laser.mob_griefing_off": "mobGriefing desligado: o ataque não vai destruir o terreno.",
+  "message.orbital_laser.complete": "Ataque concluído. Recarga iniciada.",
+  "death.attack.orbital_laser": "%1$s foi vaporizado por um laser orbital",
+  "death.attack.orbital_laser.player": "%1$s foi vaporizado pelo laser orbital de %2$s"
+}
