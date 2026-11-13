@@ -111,7 +111,13 @@ public final class StrikeRenderer {
 
     private static boolean holdingLaser(Player player) {
         return player.getMainHandItem().is(ModItems.ORBITAL_LASER.get())
-                || player.getOffhandItem().is(ModItems.ORBITAL_LASER.get());
+                || player.getOffhandItem().is(ModItems.ORBITAL_LASER.get())
+                || holdingSkyBreaks(player);
+    }
+
+    private static boolean holdingSkyBreaks(Player player) {
+        return player.getMainHandItem().is(ModItems.SKY_BREAKS.get())
+                || player.getOffhandItem().is(ModItems.SKY_BREAKS.get());
     }
 
     // ================================================================= strike
@@ -418,7 +424,8 @@ public final class StrikeRenderer {
             return;
         }
         BlockPos pos = blockHit.getBlockPos();
-        float r = ServerConfig.radiusOrDefault();
+        // (the Sky Breaks' fist leaves a crater about 140 across)
+        float r = holdingSkyBreaks(player) ? 70.0F : ServerConfig.radiusOrDefault();
         float pulse = 0.5F + 0.5F * (float) Math.sin(now * 0.3);
 
         ps.pushPose();

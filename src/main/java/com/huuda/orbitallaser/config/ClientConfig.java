@@ -11,6 +11,7 @@ public final class ClientConfig {
     public static final ForgeConfigSpec.BooleanValue SCREEN_SHAKE;
     public static final ForgeConfigSpec.DoubleValue SHAKE_STRENGTH;
     public static final ForgeConfigSpec.BooleanValue TARGET_PREVIEW;
+    public static final ForgeConfigSpec.BooleanValue SKYBREAK_FLASH;
 
     static {
         ForgeConfigSpec.Builder b = new ForgeConfigSpec.Builder();
@@ -25,6 +26,9 @@ public final class ClientConfig {
                 .defineInRange("shakeStrength", 1.0, 0.0, 3.0);
         TARGET_PREVIEW = b.comment("Show the crater outline on the aimed block while holding the item.")
                 .define("targetPreview", true);
+        SKYBREAK_FLASH = b.comment("Photosensitivity: the Sky Breaks' white flashes (the punch, the panes, the eye's flare, the slam).",
+                        "Set to false to turn them off.")
+                .define("skyBreakFlash", true);
         b.pop();
         SPEC = b.build();
     }

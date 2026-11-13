@@ -36,6 +36,36 @@ Durante a carga, um braço gigante com a pele coberta de escritas quebra o céu 
 A animação está em `client/hand/HandAnimator.java` (linha do tempo) e `sky_hand_poses.json` (poses).
 
 
+## O Céu Quebra (Sky Breaks) — fase 1 do port do Stink-O
+
+Segundo item, **O Céu Quebra** (aba Combate do criativo, ou `/give @s orbital_laser:sky_breaks`). Botão direito num bloco
+a até 256 blocos. Sequência de ~50 s, com a linha do tempo do original:
+
+| Tempo | O que acontece |
+|---|---|
+| 0–5 s | Um disco de terra de ~14 blocos em volta do alvo se solta, sobe e afunda no céu; o céu ondula |
+| 6,3–9 s | Uma mão aparece apagada por trás do céu, apoia, fecha o punho, recua e soca |
+| 9 s | O soco atravessa: flash, rachaduras correm até o horizonte, o meio cai em cacos |
+| 12–36 s | Um olho de ~150 blocos entra pelo buraco, abre, procura e encara você, pisca |
+| 16–31 s | Até 7 painéis de céu se soltam, caem e ficam no chão como gelo e obsidiana (mobs perto morrem) |
+| 35–37,5 s | O olho brilha e sai; o punho é arremessado e esmaga o chão: cratera de ~140 blocos com a marca dos nós dos dedos, onda de choque, poeira; mobs a até 125 blocos morrem (jogadores não) |
+| 38–43 s | O braço sobe e sai pelo buraco |
+| 40–46,5 s | O céu se fecha e as rachaduras somem |
+
+O braço é o esculpido do original (MakeHuman, domínio público), convertido em malha por `tools/skybreak_arm_mesh.py`,
+com a pele de escritas do concept. As poses são calculadas quadro a quadro por um port em Java do planejador `Arm`
+do original (`skybreak/ArmPlanner.java`, `skybreak/ArmRig.java`). Os sons são os 26 do Sky Breaks e 5 do Payload.
+
+Fotossensibilidade: há flashes brancos (soco, painéis, olho, impacto). Desligue com `skyBreakFlash = false` em
+`config/orbital_laser-client.toml`.
+
+### Créditos
+
+O Céu Quebra é um port do **Sky Breaks** do [Orbital Laser](https://github.com/Stink-O/orbital-laser), de Stink-O,
+licença MIT (`LICENSE-STINK-O.txt` e `NOTICE-STINK-O.txt` na raiz deste projeto). Sons sintetizados pelo autor, com
+gravações de vidro CC0 do Freesound; malha do braço esculpida a partir da base CC0 do MakeHuman. Este mod não tem
+afiliação com o autor original, a Mojang ou a Microsoft.
+
 ## Compilar pelo GitHub (recomendado)
 
 O repositório já tem o workflow `.github/workflows/build.yml`. Ele roda em todo push e gera o jar.
@@ -133,7 +163,10 @@ faça o UV para a textura e exporte de volta em OBJ (triangulado, com UV e norma
 O Minecraft não deforma malha: cada osso é uma peça rígida, então deixe sobreposição nas juntas.
 Em jogo, `F3 + T` recarrega o modelo sem reiniciar.
 
-Ferramentas (Python 3 + numpy + Pillow) em `tools/`:
+Ferramentas (Python 3 + numpy + Pillow; scipy e scikit-image para a malha do Sky Breaks) em `tools/`:
+
+- `skybreak_arm_mesh.py` — converte o braço esculpido do Stink-O (`sb_hand.bin`) em `models/skybreak/skybreak_arm.obj`
+- `skybreak_arm_preview.py` — renderiza a mão montada em poses de teste
 
 - `hand_generator.py` — gera a malha procedural, o rig e as poses
 - `hand_texture.py` — gera a textura com as escritas

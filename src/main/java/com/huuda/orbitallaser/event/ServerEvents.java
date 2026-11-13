@@ -1,6 +1,7 @@
 package com.huuda.orbitallaser.event;
 
 import com.huuda.orbitallaser.OrbitalLaserMod;
+import com.huuda.orbitallaser.skybreak.SkyBreakManager;
 import com.huuda.orbitallaser.strike.StrikeManager;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
@@ -27,6 +28,7 @@ public final class ServerEvents {
             return;
         }
         StrikeManager.get(server).tick(server);
+        SkyBreakManager.get(server).tick(server);
     }
 
     @SubscribeEvent
@@ -35,6 +37,7 @@ public final class ServerEvents {
             StrikeManager manager = StrikeManager.get(player.server);
             manager.syncTo(player);
             manager.restoreItemCooldown(player);
+            SkyBreakManager.get(player.server).syncTo(player);
         }
     }
 
@@ -49,6 +52,7 @@ public final class ServerEvents {
     public static void onChangeDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             StrikeManager.get(player.server).syncTo(player);
+            SkyBreakManager.get(player.server).syncTo(player);
         }
     }
 

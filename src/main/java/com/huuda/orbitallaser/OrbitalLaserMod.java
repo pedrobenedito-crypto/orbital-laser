@@ -4,6 +4,7 @@ import com.huuda.orbitallaser.config.ClientConfig;
 import com.huuda.orbitallaser.config.ServerConfig;
 import com.huuda.orbitallaser.network.Network;
 import com.huuda.orbitallaser.registry.ModItems;
+import com.huuda.orbitallaser.registry.ModSounds;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -24,6 +25,7 @@ public class OrbitalLaserMod {
         IEventBus modBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.ITEMS.register(modBus);
+        ModSounds.SOUNDS.register(modBus);
         modBus.addListener(this::commonSetup);
         modBus.addListener(this::addCreative);
 
@@ -39,6 +41,7 @@ public class OrbitalLaserMod {
     private void addCreative(final BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ModItems.ORBITAL_LASER);
+            event.accept(ModItems.SKY_BREAKS);
         }
     }
 }

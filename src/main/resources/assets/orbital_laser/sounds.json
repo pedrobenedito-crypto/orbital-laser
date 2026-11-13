@@ -1,0 +1,281 @@
+{
+  "skybreak.collapse": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/collapse",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.crack": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/crack",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.descend": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/descend",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.fall": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/fall",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.flare": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/flare",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.gaze": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/gaze",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.ground": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/ground",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.heal": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/heal",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.impact": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/impact",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.impact2": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/impact2",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.impact3": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/impact3",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.impact_far": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/impact_far",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.pressure": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/pressure",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.release": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/release",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.release2": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/release2",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.ripple": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/ripple",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.rise": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/rise",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.rumble": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/rumble",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.shudder": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/shudder",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.sink": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/sink",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.slam": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/slam",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.strain": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/strain",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.tear": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/tear",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.tear_far": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/tear_far",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.void": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/void",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "skybreak.withdraw": {
+    "sounds": [
+      {
+        "name": "orbital_laser:skybreak/withdraw",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "payload.ground_alt": {
+    "sounds": [
+      {
+        "name": "orbital_laser:payload/ground_alt",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "payload.blast_alt": {
+    "sounds": [
+      {
+        "name": "orbital_laser:payload/blast_alt",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "payload.blast_alt_far": {
+    "sounds": [
+      {
+        "name": "orbital_laser:payload/blast_alt_far",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "payload.rush": {
+    "sounds": [
+      {
+        "name": "orbital_laser:payload/rush",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  },
+  "payload.tail": {
+    "sounds": [
+      {
+        "name": "orbital_laser:payload/tail",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.orbital_laser.skybreak"
+  }
+}

@@ -16,5 +16,10 @@
   "message.orbital_laser.mob_griefing_off": "mobGriefing is off: the strike will not destroy terrain.",
   "message.orbital_laser.complete": "Strike complete. Cooldown started.",
   "death.attack.orbital_laser": "%1$s was vaporized by an orbital laser",
-  "death.attack.orbital_laser.player": "%1$s was vaporized by %2$s's orbital laser"
+  "death.attack.orbital_laser.player": "%1$s was vaporized by %2$s's orbital laser",
+  "item.orbital_laser.sky_breaks": "The Sky Breaks",
+  "tooltip.orbital_laser.sky_breaks": "Use: a hand breaks the sky over the aimed block",
+  "tooltip.orbital_laser.credit": "After Stink-O's Orbital Laser (MIT)",
+  "message.orbital_laser.skybreak_fired": "Something presses on the sky from behind...",
+  "subtitles.orbital_laser.skybreak": "The sky breaks"
 }

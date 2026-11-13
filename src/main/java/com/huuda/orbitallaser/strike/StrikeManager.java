@@ -352,6 +352,7 @@ public final class StrikeManager extends SavedData {
         if (owner != null) {
             if (cooldownTicks > 0) {
                 owner.getCooldowns().addCooldown(ModItems.ORBITAL_LASER.get(), cooldownTicks);
+                owner.getCooldowns().addCooldown(ModItems.SKY_BREAKS.get(), cooldownTicks);
             }
             tell(owner, Component.translatable("message.orbital_laser.complete").withStyle(ChatFormatting.AQUA));
         }
@@ -398,6 +399,15 @@ public final class StrikeManager extends SavedData {
         long remaining = cooldownRemaining(player.server, player.getUUID());
         if (remaining > 0) {
             player.getCooldowns().addCooldown(ModItems.ORBITAL_LASER.get(), (int) Math.min(Integer.MAX_VALUE, remaining));
+            player.getCooldowns().addCooldown(ModItems.SKY_BREAKS.get(), (int) Math.min(Integer.MAX_VALUE, remaining));
+        }
+    }
+
+    /** Starts a player's cooldown (shared by every laser of this mod). */
+    public void startCooldown(MinecraftServer server, UUID player, int ticks) {
+        if (ticks > 0) {
+            cooldowns.put(player, server.overworld().getGameTime() + ticks);
+            setDirty();
         }
     }
 

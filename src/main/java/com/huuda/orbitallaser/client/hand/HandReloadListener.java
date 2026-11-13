@@ -15,6 +15,9 @@ public final class HandReloadListener {
 
     @SubscribeEvent
     public static void register(RegisterClientReloadListenersEvent event) {
-        event.registerReloadListener((ResourceManagerReloadListener) resourceManager -> HandModel.invalidate());
+        event.registerReloadListener((ResourceManagerReloadListener) resourceManager -> {
+            HandModel.invalidate();
+            com.huuda.orbitallaser.client.skybreak.ArmMesh.invalidate();
+        });
     }
 }

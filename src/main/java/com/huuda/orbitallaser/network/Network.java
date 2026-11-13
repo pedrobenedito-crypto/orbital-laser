@@ -11,7 +11,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class Network {
-    private static final String PROTOCOL = "1";
+    private static final String PROTOCOL = "2";
 
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
             new ResourceLocation(OrbitalLaserMod.MODID, "main"),
@@ -33,6 +33,21 @@ public final class Network {
                 .encoder(StrikeSyncPacket::encode)
                 .decoder(StrikeSyncPacket::decode)
                 .consumerMainThread(StrikeSyncPacket::handle)
+                .add();
+        CHANNEL.messageBuilder(SkyBreakPackets.Start.class, 1, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(SkyBreakPackets.Start::encode)
+                .decoder(SkyBreakPackets.Start::decode)
+                .consumerMainThread(SkyBreakPackets.Start::handle)
+                .add();
+        CHANNEL.messageBuilder(SkyBreakPackets.Lift.class, 2, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(SkyBreakPackets.Lift::encode)
+                .decoder(SkyBreakPackets.Lift::decode)
+                .consumerMainThread(SkyBreakPackets.Lift::handle)
+                .add();
+        CHANNEL.messageBuilder(SkyBreakPackets.End.class, 3, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(SkyBreakPackets.End::encode)
+                .decoder(SkyBreakPackets.End::decode)
+                .consumerMainThread(SkyBreakPackets.End::handle)
                 .add();
     }
 

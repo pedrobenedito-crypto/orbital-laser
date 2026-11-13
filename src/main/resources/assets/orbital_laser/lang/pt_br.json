@@ -16,5 +16,10 @@
   "message.orbital_laser.mob_griefing_off": "mobGriefing desligado: o ataque não vai destruir o terreno.",
   "message.orbital_laser.complete": "Ataque concluído. Recarga iniciada.",
   "death.attack.orbital_laser": "%1$s foi vaporizado por um laser orbital",
-  "death.attack.orbital_laser.player": "%1$s foi vaporizado pelo laser orbital de %2$s"
+  "death.attack.orbital_laser.player": "%1$s foi vaporizado pelo laser orbital de %2$s",
+  "item.orbital_laser.sky_breaks": "O Céu Quebra",
+  "tooltip.orbital_laser.sky_breaks": "Usar: uma mão quebra o céu sobre o bloco mirado",
+  "tooltip.orbital_laser.credit": "Baseado no Orbital Laser de Stink-O (MIT)",
+  "message.orbital_laser.skybreak_fired": "Algo pressiona o céu por trás...",
+  "subtitles.orbital_laser.skybreak": "O céu quebra"
 }

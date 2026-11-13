@@ -2,6 +2,7 @@ package com.huuda.orbitallaser.registry;
 
 import com.huuda.orbitallaser.OrbitalLaserMod;
 import com.huuda.orbitallaser.item.OrbitalLaserItem;
+import com.huuda.orbitallaser.item.SkyBreakItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraftforge.registries.DeferredRegister;
@@ -14,6 +15,12 @@ public final class ModItems {
 
     public static final RegistryObject<Item> ORBITAL_LASER = ITEMS.register("orbital_laser",
             () -> new OrbitalLaserItem(new Item.Properties()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC)
+                    .fireResistant()));
+
+    public static final RegistryObject<Item> SKY_BREAKS = ITEMS.register("sky_breaks",
+            () -> new SkyBreakItem(new Item.Properties()
                     .stacksTo(1)
                     .rarity(Rarity.EPIC)
                     .fireResistant()));
