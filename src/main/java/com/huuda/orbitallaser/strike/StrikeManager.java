@@ -198,10 +198,8 @@ public final class StrikeManager extends SavedData {
         strike.ticksInState++;
         setDirty();
 
+        // The glass impacts are played by the clients, in sync with the Sky Hand's punches.
         float progress = Math.min(1.0F, strike.ticksInState / (float) strike.chargeTicks);
-        if (strike.ticksInState % 20 == 1) {
-            skySound(level, strike, SoundEvents.GLASS_BREAK, 1.2F, 0.5F + progress * 0.4F);
-        }
         if (strike.ticksInState % 40 == 1) {
             skySound(level, strike, SoundEvents.BEACON_AMBIENT, 1.5F, 0.5F + progress);
         }

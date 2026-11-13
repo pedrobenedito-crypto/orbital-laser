@@ -1,11 +1,15 @@
 package com.huuda.orbitallaser.client;
 
 import com.huuda.orbitallaser.OrbitalLaserMod;
+import com.huuda.orbitallaser.client.hand.HandAnimator;
 import com.huuda.orbitallaser.config.ClientConfig;
 import com.huuda.orbitallaser.network.StrikeSyncPacket;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
@@ -98,12 +102,61 @@ public final class ClientStrikes {
                 it.remove();
             }
         }
-        if (mc.player == null || !ClientConfig.PARTICLES.get()) {
+        if (mc.player == null) {
+            return;
+        }
+        for (ClientStrike s : STRIKES.values()) {
+            detectPunches(level, s, gameTime, mc.player);
+        }
+        if (!ClientConfig.PARTICLES.get()) {
             return;
         }
         for (ClientStrike s : STRIKES.values()) {
             spawnParticles(level, s, gameTime, mc.player);
         }
+    }
+
+    /** Plays the glass impacts of the Sky Hand's three punches and kicks the screen shake. */
+    private static void detectPunches(ClientLevel level, ClientStrike s, long gameTime, Player player) {
+        if (s.phase != StrikeSyncPacket.CHARGING || s.ended()) {
+            return;
+        }
+        float p = (gameTime - s.phaseStart) / (float) s.chargeTicks;
+        float last = s.lastChargeP;
+        s.lastChargeP = p;
+        if (Float.isNaN(last)) {
+            return;
+        }
+        for (int i = 0; i < HandAnimator.PUNCHES.length; i++) {
+            float at = HandAnimator.PUNCHES[i];
+            if (last < at && p >= at) {
+                boolean breaks = i == HandAnimator.PUNCHES.length - 1;
+                s.lastPunch = gameTime;
+                s.punchStrength = breaks ? 1.0F : 0.55F + i * 0.15F;
+                if (breaks) {
+                    skySound(level, s, player, SoundEvents.GLASS_BREAK, 1.0F, 0.5F);
+                    skySound(level, s, player, SoundEvents.GLASS_BREAK, 1.0F, 0.75F);
+                    skySound(level, s, player, SoundEvents.GLASS_BREAK, 0.9F, 1.0F);
+                    skySound(level, s, player, SoundEvents.GENERIC_EXPLODE, 0.9F, 0.55F);
+                } else {
+                    skySound(level, s, player, SoundEvents.ANVIL_LAND, 0.7F, 0.45F + i * 0.1F);
+                    skySound(level, s, player, SoundEvents.GLASS_BREAK, 0.8F, 0.6F + i * 0.1F);
+                }
+            }
+        }
+    }
+
+    /** A sound from the sky, heard from far away: played near the listener, quieter with distance. */
+    private static void skySound(ClientLevel level, ClientStrike s, Player player, SoundEvent sound,
+                                 float volume, float pitch) {
+        double dx = s.centerX() - player.getX();
+        double dy = s.skyY() - player.getEyeY();
+        double dz = s.centerZ() - player.getZ();
+        double dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+        float falloff = (float) Math.max(0.12, 1.0 - dist / 700.0);
+        double k = dist > 1.0 ? 6.0 / dist : 0.0;
+        level.playLocalSound(player.getX() + dx * k, player.getEyeY() + dy * k, player.getZ() + dz * k,
+                sound, SoundSource.BLOCKS, volume * falloff, pitch, false);
     }
 
     private static void spawnParticles(ClientLevel level, ClientStrike s, long gameTime, Player player) {
@@ -246,6 +299,10 @@ public final class ClientStrikes {
                     double age = now - s.endTime;
                     i = (float) Math.max(0.0, 0.3 * (1.0 - age / 40.0));
                 }
+            }
+            double sincePunch = now - s.lastPunch;
+            if (sincePunch >= 0.0 && sincePunch < 30.0) {
+                i = Math.max(i, s.punchStrength * (float) Math.exp(-sincePunch / 5.0));
             }
             best = Math.max(best, i * falloff);
         }

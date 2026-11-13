@@ -17,7 +17,24 @@ e um feixe abre uma cratera em camadas. Baseado na apresentação *Orbital Laser
 
 O item fica na aba **Combate** do modo criativo (ou `/give @s orbital_laser:orbital_laser`).
 
-Sequência: **Mirar → Carga (5 s, céu rachando) → Disparo (núcleo cai) → Impacto (feixe + onda de choque) → Cratera (cavada em lotes) → Recarga (60 s)**.
+Sequência: **Mirar → Carga (5 s) → Disparo → Impacto (feixe + onda de choque) → Cratera (cavada em lotes) → Recarga (60 s)**.
+
+### A Mão do Céu (Sky Hand)
+
+Durante a carga, um braço gigante com a pele coberta de escritas quebra o céu por trás:
+
+| Momento (fração da carga) | O que acontece |
+|---|---|
+| 0–6% | O punho desce por trás do céu, visível apagado através do "vidro" |
+| 16% e 36% | Socos 1 e 2 (com antecipação): rachaduras crescem, tela treme, som de impacto |
+| 56% | Soco 3: o vidro estoura, cacos caem e o punho atravessa o buraco |
+| 60–86% | O braço desce; a mão vai de punho → garra (pose do concept) → palma aberta, dedo por dedo |
+| 80–100% | O núcleo escuro se forma na palma, os dedos tremem |
+| Disparo | O laser sai da palma, o braço recua com o tranco e os dedos se tensionam |
+| Fim | A mão fecha e sobe de volta pelo buraco |
+
+A animação está em `client/hand/HandAnimator.java` (linha do tempo) e `sky_hand_poses.json` (poses).
+
 
 ## Compilar pelo GitHub (recomendado)
 
@@ -101,6 +118,28 @@ A primeira execução baixa Minecraft e Forge e demora alguns minutos.
 - Morte, saída do jogador ou recarregar o mundo durante a **carga** cancela com segurança (sem gastar a recarga). Depois do disparo, o ataque vai até o fim.
 - Toda mudança de estado aparece no log do servidor com o prefixo `[orbital_laser]`.
 
+## Trocar o modelo da mão por um esculpido no Blender
+
+Arquivos em `src/main/resources/assets/orbital_laser/`:
+
+- `models/sky_hand/sky_hand.obj` — malha, um objeto por osso
+- `models/sky_hand/sky_hand_rig.json` — hierarquia, pivôs (articulações) e rotação de descanso de cada osso
+- `models/sky_hand/sky_hand_poses.json` — poses `fist`, `claw`, `open`, `strain`, `relaxed` (graus `[x, y, z]`; x negativo fecha o dedo)
+- `textures/entity/sky_hand.png` — textura (1024×1024)
+
+Para substituir: importe o `sky_hand.obj` no Blender (Y para cima), esculpa cada peça mantendo o nome do objeto
+(`arm`, `hand`, `index_1`…`index_3`, `middle_*`, `ring_*`, `pinky_*`, `thumb_*`) e a posição das articulações,
+faça o UV para a textura e exporte de volta em OBJ (triangulado, com UV e normais, Y para cima, -Z para frente).
+O Minecraft não deforma malha: cada osso é uma peça rígida, então deixe sobreposição nas juntas.
+Em jogo, `F3 + T` recarrega o modelo sem reiniciar.
+
+Ferramentas (Python 3 + numpy + Pillow) em `tools/`:
+
+- `hand_generator.py` — gera a malha procedural, o rig e as poses
+- `hand_texture.py` — gera a textura com as escritas
+- `hand_preview.py` — renderiza uma pose em PNG
+- `hand_animatic.py` — gera os quadros do animatic da sequência (vista do chão), para revisar timing sem abrir o jogo
+
 ## Estrutura
 
 ```
@@ -110,7 +149,9 @@ src/main/java/com/huuda/orbitallaser/
   strike/StrikeManager.java      estados, validação, cratera em lotes, recarga, persistência
   strike/Strike.java             dados de um ataque e formato da cratera
   network/                       pacote servidor → cliente com a fase do ataque
-  client/StrikeRenderer.java     rachaduras no céu, núcleo, feixe, onda de choque, anel de mira
+  client/StrikeRenderer.java     rachaduras no céu, buraco, cacos, mão, núcleo, feixe, onda de choque, anel de mira
+  client/hand/HandModel.java     carrega OBJ + rig + poses e desenha a mão
+  client/hand/HandAnimator.java  linha do tempo da animação da mão
   client/ClientStrikes.java      coluna de poeira, partículas, tremor de tela
   config/                        configs de servidor e cliente
 ```

@@ -29,6 +29,11 @@ public final class ClientStrike {
     public boolean cancelled;
     /** True once the impact burst particles were spawned for this strike. */
     public boolean impactSpawned;
+    /** Charge fraction seen on the previous client tick, to detect the hand's punches. */
+    public float lastChargeP = Float.NaN;
+    /** Game time of the last punch on the glass, for the screen shake. */
+    public double lastPunch = -1.0E9;
+    public float punchStrength;
 
     private List<CrackGeometry.Segment> cracks;
 
@@ -52,6 +57,16 @@ public final class ClientStrike {
     /** Overall size of the crack pattern, in blocks. */
     public float crackSize() {
         return Math.max(48.0F, radius * 6.0F);
+    }
+
+    /** Direction the arm comes from (degrees around Y), fixed per strike. */
+    public float handYaw() {
+        return new java.util.Random(seed * 31L + 7L).nextFloat() * 360.0F;
+    }
+
+    /** Model scale of the Sky Hand: about 24 blocks per palm length for a radius 24 crater. */
+    public float handScale() {
+        return Math.max(10.0F, radius * 1.0F);
     }
 
     public List<CrackGeometry.Segment> cracks() {
